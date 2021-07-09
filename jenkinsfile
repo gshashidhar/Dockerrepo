@@ -12,7 +12,7 @@ pipeline {
                 sh 'cd /home/slave2/'
                 sh 'git clone https://github.com/gshashidhar/java-mvn-hello-world-web-app.git'
                 sh 'pwd'
-                sh 'cd mavenproject'
+                sh 'cd /home/slave2/mavenproject/'
             }
         }
         stage(InstallProcess) {
