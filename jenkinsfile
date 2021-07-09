@@ -23,7 +23,7 @@ pipeline {
          stage(copywarfile) {
            steps {
                     sh 'cd /home/slave2/workspace/mavenproject/target/'
-                    sh 'cp mvn-hello-world.war /opt/tomcat/webapps/'
+                    sh 'cp /home/slave2/workspace/mavenproject/target/mvn-hello-world.war /opt/tomcat/webapps/'
                     sh 'cd /opt/tomcat/bin'
                     sh './startup.sh'
 		}
