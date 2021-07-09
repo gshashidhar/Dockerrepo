@@ -1,6 +1,5 @@
 pipeline {
     agent  { label 'slave2'}
-
     stages {
         stage('Hello') {
             steps {
@@ -16,18 +15,18 @@ pipeline {
             }
         }
         stage(InstallProcess) {
-  steps {
-                echo 'Build teh war file'
-                sh 'mvn install'
-            }
+  		steps {
+                	echo 'Build teh war file'
+                	sh 'mvn install'
+            	}
+	}
          stage(copywarfile) {
            steps {
                     sh 'cd /home/slave2/workspace/mavenproject/target/'
                     sh 'cp mvn-hello-world.war /opt/tomcat/webapps/'
                     sh 'cd /opt/tomcat/bin'
                     sh './startup.sh'
-        }
-    }
-  }
-}
+		}
+	   }
+	}
 }
