@@ -4,7 +4,7 @@ pipeline {
         stage(cloneProject) {
             steps {
                 sh 'cd /home/slave2/'
-                sh 'sudo git clone https://github.com/gshashidhar/Dockerrepo.git'
+                sh 'git clone https://github.com/gshashidhar/Dockerrepo.git'
                 sh 'pwd'
                 sh 'cd /home/slave2/workspace/DockermavenCICD'
             }
