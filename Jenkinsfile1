@@ -19,7 +19,7 @@ pipeline {
 	}
          stage(DeployProcess) {
            steps {
-                    sh '/home/slave2/workspace/DockermavenCICD'
+                    sh 'cd /home/slave2/workspace/DockermavenCICD'
                     sh 'sudo docker run -d -p 8083:8080 mavenbuild:latest'
 		}
 	   }
