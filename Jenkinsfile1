@@ -1,0 +1,27 @@
+pipeline {
+    agent  { label 'slave2'}
+    stages {
+        stage(cloneProject) {
+            steps {
+                sh 'cd /home/slave2/'
+                sh 'sudo git clone https://github.com/gshashidhar/Dockerrepo.git'
+                sh 'pwd'
+                sh 'cd /home/slave2/Dockerrepo/'
+            }
+        }
+        stage(BuildProcess) {
+  		steps {
+                	sh 'cd /home/slave2/Dockerrepo/'
+                	sh 'sudo docker build -t mavenbuild /home/slave2/Dockerrepo/'
+			sh 'sudo docker tag mavenbuild:latest 423155163727.dkr.ecr.us-east-2.amazonaws.com/myrepository1:latest'
+      sh 'sudo docker push 423155163727.dkr.ecr.us-east-2.amazonaws.com/myrepository1:latest'
+            	}
+	}
+         stage(DeployProcess) {
+           steps {
+                    sh 'cd /home/slave2/Dockerrepo/'
+                    sh 'sudo docker run -d -p 8083:8080 mavenbuild:latest'
+		}
+	   }
+	}
+}
