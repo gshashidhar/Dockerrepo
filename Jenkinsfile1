@@ -12,9 +12,9 @@ pipeline {
         stage(BuildProcess) {
   		steps {
                 	sh 'cd /home/slave2/workspace/DockermavenCICD'
-                	sh 'sudo docker build -t mavenbuild /home/slave2/workspace/DockermavenCICD'
-			sh 'sudo docker tag mavenbuild:latest 423155163727.dkr.ecr.us-east-2.amazonaws.com/myrepository1:latest'
-                        sh 'sudo docker push 423155163727.dkr.ecr.us-east-2.amazonaws.com/myrepository1:latest'
+                	sh 'docker build -t mavenbuild /home/slave2/workspace/DockermavenCICD'
+			sh 'docker tag mavenbuild:latest 423155163727.dkr.ecr.us-east-2.amazonaws.com/myrepository1:latest'
+                        sh 'docker push 423155163727.dkr.ecr.us-east-2.amazonaws.com/myrepository1:latest'
             	}
 	}
          stage(DeployProcess) {
